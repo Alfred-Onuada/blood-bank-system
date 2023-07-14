@@ -9,6 +9,9 @@ import appRoutes from './routes/general.routes.js'
 const DB_URI = process.env.NODE_ENV === 'development' ? process.env.DB_URI_DEV : process.env.DB_URI_PROD;
 const PORT = process.env.PORT || 9111;
 
+console.log(process.env)
+console.log(DB_URI)
+
 // Create server instance
 const server = express();
 server.set('view engine', 'ejs');
