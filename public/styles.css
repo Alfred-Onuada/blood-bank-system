@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Geologica', sans-serif;
+}
+
+.custom-card {
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0px;
+}
+
+.custom-card p {
+  margin: 0px;
+  font-weight: 200;
+}

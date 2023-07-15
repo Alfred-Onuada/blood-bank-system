@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 9111;
 // Create server instance
 const server = express();
 server.set('view engine', 'ejs');
+server.use(express.static('./public'))
 
 // connect to DB
 await mongoose.connect(DB_URI);
