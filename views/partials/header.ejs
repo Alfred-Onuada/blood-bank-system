@@ -21,8 +21,8 @@
               Register
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">As a Hospital</a></li>
-              <li><a class="dropdown-item" href="#">As a Donor</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#hospitalReg">As a Hospital</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#donorReg">As a Donor</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -30,8 +30,8 @@
               Login
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">As a Hospital</a></li>
-              <li><a class="dropdown-item" href="#">As a Donor</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#hospitalLogin">As a Hospital</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#donorLogin">As a Donor</a></li>
             </ul>
           </li>
         </ul>
@@ -39,3 +39,149 @@
     </div>
   </nav>
 </header>
+
+
+
+<!-- Hospital Registration -->
+<div class="modal fade" id="hospitalReg" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="hospitalRegLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form onsubmit="return register('hospital')">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="hospitalRegLabel">Sign up as a Hospital</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="hospitalNameReg" class="form-label">Hospital Name</label>
+            <input required type="text" class="form-control" id="hospitalNameReg" placeholder="BUTH">
+          </div>
+          <div class="mb-3">
+            <label for="hospitalEmailReg" class="form-label">Email address</label>
+            <input required type="email" class="form-control" id="hospitalEmailReg" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="hospitalAddressReg" class="form-label">Address</label>
+            <input required type="text" class="form-control" id="hospitalAddressReg" placeholder="#5 Agip Estate">
+          </div>
+          <div class="mb-3">
+            <label for="hospitalStateReg" class="form-label">State</label>
+            <input required type="text" class="form-control" id="hospitalStateReg" placeholder="Akwa Ibom">
+          </div>
+          <div class="mb-3">
+            <label for="hospitalPasswordReg" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="hospitalPasswordReg" placeholder="******">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Donor Registration -->
+<div class="modal fade" id="donorReg" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="donorRegLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form onsubmit="return register('donor')">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="donorRegLabel">Sign up as a Donor</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="donorNameReg" class="form-label">Full Name</label>
+            <input required type="text" class="form-control" id="donorNameReg" placeholder="Taylor Swift">
+          </div>
+          <div class="mb-3">
+            <label for="donorEmailReg" class="form-label">Email address</label>
+            <input required type="email" class="form-control" id="donorEmailReg" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="donorPhoneReg" class="form-label">Phone Number</label>
+            <input required type="text" class="form-control" id="donorPhoneReg" placeholder="+234 888 888 8181">
+          </div>
+          <div class="mb-3">
+            <label for="donorAgeReg" class="form-label">Age</label>
+            <input required type="number" class="form-control" id="donorAgeReg" placeholder="18" min="18" max="60">
+          </div>
+          <div class="mb-3">
+            <label for="donorBloodGroupReg" class="form-label">Blood Group</label>
+            <input required type="text" class="form-control" id="donorBloodGroupReg" placeholder="AB">
+          </div>
+          <div class="mb-3">
+            <label for="donorGenotypeReg" class="form-label">Genotype</label>
+            <input required type="text" class="form-control" id="donorGenotypeReg" placeholder="AS">
+          </div>
+          <div class="mb-3">
+            <label for="donorPasswordReg" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="donorPasswordReg" placeholder="******">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Hospital Login -->
+<div class="modal fade" id="hospitalLogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="hospitalLoginLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form onsubmit="return login('hospital')">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="hospitalLoginLabel">Login as a Hospital</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="hospitalEmailLogin" class="form-label">Email address</label>
+            <input required type="email" class="form-control" id="hospitalEmailLogin" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="hospitalPasswordLogin" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="hospitalPasswordLogin" placeholder="*******">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Donor Login -->
+<div class="modal fade" id="donorLogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="donorLoginLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form onsubmit="return login('donor')">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="donorLoginLabel">Login as a Donor</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="donorEmailLogin" class="form-label">Email address</label>
+            <input required type="email" class="form-control" id="donorEmailLogin" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="donorPasswordLogin" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="donorPasswordLogin" placeholder="*******">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
