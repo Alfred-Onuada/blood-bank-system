@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import validator from "validator";
+const { isEmail, isMobilePhone } = validator;
 
 const donorSchema = new mongoose.Schema({
   fullName: {
@@ -9,11 +11,16 @@ const donorSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Please specify an Email"],
+    validate: [isEmail, "Please specify a valid email"],
     unique: true
   },
   phone: {
     type: String,
     required: [true, "Please specify a Phone Number"],
+    validate: {
+      validator: (phoneNumber) => isMobilePhone(phoneNumber, "en-NG"),
+      message: "Please specify a valid Nigerian phone number (+234)",
+    },
     unique: true
   },
   age: {
@@ -30,7 +37,9 @@ const donorSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Please specify a Password"]
+    required: [true, "Please specify a Password"],
+    minLength: [8, "Password must be at least 8 characters long"],
+    maxLength: [32, "Password must be less than 33 characters"]
   }
 }, { timestamps: true })
 
@@ -40,4 +49,6 @@ donorSchema.pre('save', function (next) {
   next()
 })
 
-const donorModel = mongoose.Model('donor', donorSchema);
+const donorModel = mongoose.model('donor', donorSchema);
+
+export default donorModel;

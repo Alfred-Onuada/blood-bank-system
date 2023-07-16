@@ -4,4 +4,6 @@ const bloodDonationSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const bloodDonationModel = mongoose.Model('bloodDonation', bloodDonationSchema);
+const bloodDonationModel = mongoose.model('bloodDonation', bloodDonationSchema);
+
+export default bloodDonationModel;

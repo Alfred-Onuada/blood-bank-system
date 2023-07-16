@@ -4,6 +4,7 @@ parser();
 
 import express from 'express';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 import appRoutes from './routes/general.routes.js'
 
 const DB_URI = process.env.NODE_ENV === 'development' ? process.env.DB_URI_DEV : process.env.DB_URI_PROD;
@@ -13,6 +14,8 @@ const PORT = process.env.PORT || 9111;
 const server = express();
 server.set('view engine', 'ejs');
 server.use(express.static('./public'))
+server.use(cookieParser());
+server.use(express.json());
 
 // connect to DB
 await mongoose.connect(DB_URI);

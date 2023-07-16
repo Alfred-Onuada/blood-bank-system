@@ -4,4 +4,6 @@ const adminSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const adminModel = mongoose.Model('admin', adminSchema);
+const adminModel = mongoose.model('admin', adminSchema);
+
+export default adminModel;

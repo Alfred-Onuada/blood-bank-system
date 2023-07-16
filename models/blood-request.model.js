@@ -4,4 +4,6 @@ const bloodRequestSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const bloodRequestModel = mongoose.Model('bloodRequest', bloodRequestSchema);
+const bloodRequestModel = mongoose.model('bloodRequest', bloodRequestSchema);
+
+export default bloodRequestModel;
