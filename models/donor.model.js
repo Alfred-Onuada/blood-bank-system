@@ -29,11 +29,19 @@ const donorSchema = new mongoose.Schema({
   },
   bloodGroup: {
     type: String,
-    required: [true, "Please specify a Blood Group"]
+    enum: {
+      values: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+      message: "Invalid blood group"
+    },
+    required: [true, "Please specify a blood group"]
   },
   genotype: {
     type: String,
-    required: [true, "Please specify a Genotype"]
+    enum: {
+      values: ['AA', 'AS', 'AC', 'SS', 'SC', 'CC'],
+      message: "Invalid genotype"
+    },
+    required: [true, "Please specify a valid genotype"]
   },
   password: {
     type: String,

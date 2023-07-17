@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authRoutes from "./auth.routes.js";
 import jwt from "jsonwebtoken";
+import userRoutes from "./user.routes.js"
 
 const router = Router();
 
@@ -53,5 +54,7 @@ router.get('/logout', (req, res) => {
 })
 
 router.use('/auth', authRoutes);
+
+router.use('/user', userRoutes);
 
 export default router;

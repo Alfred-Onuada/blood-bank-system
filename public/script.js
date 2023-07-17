@@ -7,7 +7,7 @@ window.onload = function (e) {
   }
 }
 
-function showErrorMsg(msg, elemId) {
+function showMsg(msg, elemId) {
   document.getElementById(elemId).classList.remove('hide');
   document.getElementById(elemId).classList.add('shake');
   document.getElementById(elemId).textContent = msg;
@@ -50,7 +50,7 @@ function register(type) {
 
       if (resp.status != 200) {
         const error = data?.errors ? data.errors[0] : data.message;
-        showErrorMsg(error, `reg${type}`);
+        showMsg(error, `reg${type}`);
         return;
       }
 
@@ -89,11 +89,96 @@ function login(type) {
 
       if (resp.status != 200) {
         const error = data?.errors ? data.errors[0] : data.message;
-        showErrorMsg(error, `login${type}`);
+        showMsg(error, `login${type}`);
         return;
       }
 
       location.reload();
+    })
+
+  return false;
+}
+
+function requestBlood() {
+  const requestIds = ['requestBloodGroup', 'requestGenotype', 'requestQuantity'];
+  const fields = ['bloodGroup', 'genotype', 'quantity'];
+
+  let payload = {};
+
+  payload = Object.fromEntries(requestIds.map((field, idx) => ([fields[idx], document.getElementById(field).value])))
+
+  fetch(`/user/request`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(async (resp) => {
+      const data = await resp.json();
+
+      if (resp.status != 200) {
+        const error = data?.errors ? data.errors[0] : data.message;
+        showMsg(error, 'requestFailed');
+        return;
+      }
+
+      showMsg(data.message, 'requestSuccess');
+    })
+
+  return false;
+}
+
+function getCenters() {
+  const state = document.getElementById('donateState').value;
+
+  fetch(`/user/centers/${state}`)
+    .then(async (resp) => {
+      const data = await resp.json();
+
+      if (resp.status != 200) {
+        const error = data?.errors ? data.errors[0] : data.message;
+        showMsg(error, 'donateFailed');
+        return;
+      }
+
+      // populate the select elem
+      for (const { hospitalName } of data.data) {
+        const node = document.createElement('option');
+        node.textContent = hospitalName;
+        document.getElementById('donateCenter').appendChild(node)
+      }
+
+      document.getElementById('donateCenter').removeAttribute('disabled');
+      document.getElementById('donateBtn').removeAttribute('disabled');
+    })
+}
+
+function giveBlood() {
+  const requestIds = ['donateQuantity', 'donateDate', 'donateState', 'donateCenter'];
+  const fields = ['quantity', 'date', 'state', 'center'];
+
+  let payload = {};
+
+  payload = Object.fromEntries(requestIds.map((field, idx) => ([fields[idx], document.getElementById(field).value])))
+
+  fetch(`/user/donate`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(async (resp) => {
+      const data = await resp.json();
+
+      if (resp.status != 200) {
+        const error = data?.errors ? data.errors[0] : data.message;
+        showMsg(error, 'donateFailed');
+        return;
+      }
+
+      showMsg(data.message, 'donateSuccess');
     })
 
   return false;
