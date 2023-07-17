@@ -35,5 +35,6 @@ export default function (error, res) {
     return;
   }
 
+  console.log(error);
   res.status(500).json({ message: "Internal Server Error" });
 };
