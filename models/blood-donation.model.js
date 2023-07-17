@@ -21,6 +21,13 @@ const bloodDonationSchema = new mongoose.Schema({
   center: {
     type: String,
     required: [true, 'Center is required']
+  },
+  approved: {
+    type: String,
+    enum: {
+      values: ['yes', 'no', 'not reviewed'],
+    },
+    default: 'not reviewed'
   }
 }, { timestamps: true })
 

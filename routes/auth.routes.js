@@ -12,7 +12,7 @@ const router = Router();
  * @param {"donor"|"hospital"} userType 
  * @param {request} res 
  */
-const createJWT = function (email, userType, res) {
+export const createJWT = function (email, userType, res) {
   const payload = {
     email,
     userType

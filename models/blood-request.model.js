@@ -25,6 +25,13 @@ const bloodRequestSchema = new mongoose.Schema({
   quantity: {
     type: Number,
     required: [true, "Please specify the quantity"]
+  },
+  approved: {
+    type: String,
+    enum: {
+      values: ['yes', 'no', 'not reviewed'],
+    },
+    default: 'not reviewed'
   }
 }, { timestamps: true })
 

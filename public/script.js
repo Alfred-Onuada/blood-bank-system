@@ -142,6 +142,8 @@ function getCenters() {
         return;
       }
 
+      document.getElementById('donateCenter').innerHTML = '';
+      
       // populate the select elem
       for (const { hospitalName } of data.data) {
         const node = document.createElement('option');
