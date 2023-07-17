@@ -6,7 +6,30 @@ import bloodDonationModel from "../models/blood-donation.model.js";
 import handleError from "../utils/handleError.js";
 import hospitalModel from "../models/hospital.model.js";
 import donorModel from "../models/donor.model.js";
+import nodemailer from 'nodemailer';
 const router = Router();
+
+const sendEmail = async function (receiver, msg) {
+  // initialize nodemailer
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+
+  let mailOptions = {
+    from: `BBMS Info`,
+    to: receiver,
+    subject: 'Operation Update',
+    text: msg
+  };
+
+  await transporter.sendMail(mailOptions);
+
+  transporter.close()
+}
 
 const getNetBloodQuantity = async function () {
   // run an aggregation to get all the required info
@@ -186,9 +209,6 @@ router.get('/requests', async (req, res) => {
 
   const donors = await donorModel.find({});
 
-  console.log(hospitals)
-  console.log(donors)
-
   res.render('admin/requests', { donationRequest, bloodRequest, combined, hospitals, donors });
 })
 
@@ -212,6 +232,7 @@ router.post('/login', (req, res) => {
 router.patch('/rejectRequest/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    const { msg } = req.body;
 
     if (typeof id == 'undefined') {
       res.status(400).json({ message: "Invalid request ID" });
@@ -225,6 +246,11 @@ router.patch('/rejectRequest/:id', async (req, res) => {
       res.status(404).json({ message: "Operation failed, No such blood request" })
       return;
     }
+
+    const requestDoc = await bloodRequestModel.findOne({ _id: id });
+    const hospital = await hospitalModel.findOne({ _id: requestDoc.hospitalId });
+
+    await sendEmail(hospital.email, msg);
 
     res.status(200).json({ message: "success" });
   } catch (error) {
@@ -257,6 +283,11 @@ router.patch('/approveRequest/:id', async (req, res) => {
 
     await bloodRequestModel.updateOne({ _id: id }, { approved: 'yes' });
 
+    const requestDoc = await bloodRequestModel.findOne({ _id: id });
+    const hospital = await hospitalModel.findOne({ _id: requestDoc.hospitalId });
+
+    await sendEmail(hospital.email, "You request for blood from the blood bank was approved");
+
     res.status(200).json({ message: "success" });
   } catch (error) {
     handleError(error, res);
@@ -266,6 +297,7 @@ router.patch('/approveRequest/:id', async (req, res) => {
 router.patch('/rejectDonation/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    const { msg } = req.body;
 
     if (typeof id == 'undefined') {
       res.status(400).json({ message: "Invalid donation ID" });
@@ -279,6 +311,11 @@ router.patch('/rejectDonation/:id', async (req, res) => {
       res.status(404).json({ message: "Operation failed, No such blood donation" })
       return;
     }
+
+    const donationDoc = await bloodDonationModel.findOne({ _id: id });
+    const donor = await donorModel.findOne({ _id: donationDoc.donorId });
+
+    await sendEmail(donor.email, msg);
 
     res.status(200).json({ message: "success" });
   } catch (error) {
@@ -303,6 +340,10 @@ router.patch('/approveDonation/:id', async (req, res) => {
       return;
     }
 
+    const donationDoc = await bloodDonationModel.findOne({ _id: id });
+    const donor = await donorModel.findOne({ _id: donationDoc.donorId });
+
+    await sendEmail(donor.email, "You blood donation has been approved");
     res.status(200).json({ message: "success" });
   } catch (error) {
     handleError(error, res);

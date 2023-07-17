@@ -8,6 +8,32 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <!-- Reject -->
+  <div class="modal fade" id="reject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rejectLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div id="rejectFailed" class="alert alert-success hide m-3" role="alert"></div>
+        <form onsubmit="return rejectFunc()">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="rejectLabel">Give a reason for rejection</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="requestId" hidden>
+            <input type="text" id="requestType" hidden>
+            <div class="mb-3">
+              <label for="requestQuantity" class="form-label">Reason</label>
+              <input required type="text" class="form-control" id="reason" placeholder="Type a reason">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-danger">Reject</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div class="container mt-3">
     <h4 class="display-5 text-center">Admin Dashboard</h4>
 
@@ -58,7 +84,7 @@
               <td><%= data['genotype'] %></td>
               <td><%= data['quantity'] %></td>
               <td><%= new Date(data['createdAt']).getUTCDate() %> / <%= new Date(data['createdAt']).getMonth() %> / <%= new Date(data['createdAt']).getFullYear() %></td>
-              <td><button class="btn btn-outline-danger" onclick="rejectRequest('<%= data._id %>')">Reject</button></td>
+              <td><button class="btn btn-outline-danger" onclick="updateReasonModal('<%= data._id %>', 'request')" data-bs-toggle="modal" data-bs-target="#reject">Reject</button></td>
               <td><button class="btn btn-outline-success" onclick="approveRequest('<%= data._id %>')">Approve</button></td>
             </tr>
           <% }) %>
@@ -97,7 +123,7 @@
               <td><%= data['state'] %></td>
               <td><%= data['center'] %></td>
               <td><%= new Date(data['createdAt']).getUTCDate() %> / <%= new Date(data['createdAt']).getMonth() %> / <%= new Date(data['createdAt']).getFullYear() %></td>
-              <td><button class="btn btn-outline-danger" onclick="rejectDonation('<%= data._id %>')">Reject</button></td>
+              <td><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#reject" onclick="updateReasonModal('<%= data._id %>', 'donation')">Reject</button></td>
               <td><button class="btn btn-outline-success" onclick="approveDonation('<%= data._id %>')">Approve</button></td>
             </tr>
           <% }) %>

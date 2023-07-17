@@ -39,16 +39,37 @@ function adminLogin() {
   return false
 }
 
-function rejectRequest(requestId) {
+function updateReasonModal(id, type) {
+  document.getElementById('requestId').value = id;
+  document.getElementById('requestType').value = type;
+}
+
+function rejectFunc() {
+  const id = document.getElementById('requestId').value;
+  const type = document.getElementById('requestType').value;
+  const reason = document.getElementById('reason').value;
+
+  if (type == 'request') {
+    rejectRequest(id, reason);
+  } else {
+    rejectDonation(id, reason);
+  }
+}
+
+function rejectRequest(requestId, reason) {
   fetch(`/admin/rejectRequest/${requestId}`, {
-    method: 'PATCH'
+    method: 'PATCH',
+    body: JSON.stringify({ msg: reason }),
+    headers: {
+      'content-type': 'application/json'
+    }
   })
     .then(async (resp) => {
       const data = await resp.json();
 
       if (resp.status != 200) {
         const error = data?.errors ? data.errors[0] : data.message;
-        showMsg(error, 'requestBlood');
+        showMsg(error, 'rejectFailed');
         return;
       }
 
@@ -73,16 +94,20 @@ function approveRequest(requestId) {
     })
 }
 
-function rejectDonation(donationId) {
+function rejectDonation(donationId, reason) {
   fetch(`/admin/rejectDonation/${donationId}`, {
-    method: 'PATCH'
+    method: 'PATCH',
+    body: JSON.stringify({ msg: reason }),
+    headers: {
+      'content-type': 'application/json'
+    }
   })
     .then(async (resp) => {
       const data = await resp.json();
 
       if (resp.status != 200) {
         const error = data?.errors ? data.errors[0] : data.message;
-        showMsg(error, 'bloodDonation');
+        showMsg(error, 'rejectfailed');
         return;
       }
 
