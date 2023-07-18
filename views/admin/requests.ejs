@@ -131,6 +131,30 @@
       </table>
     </div>
 
+    <!-- Messages -->
+    <div class="mb-5">
+      <h4 class="display-7" style="font-weight: 200;">Received Messages</h4>
+      <table class="table table-responsive table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Messages</th>
+        </thead>
+        <tbody style="font-weight: 200;">
+          <% messages.forEach((data, idx) => { %>
+            <tr>
+              <td><%= idx + 1 %></td>
+              <td><%= data['email'] %></td>
+              <td><%= data['phone'] %></td>
+              <td><%= data['message'] %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
     <!-- Hospitals -->
     <div class="mb-5">
       <h4 class="display-7" style="font-weight: 200;">Registered Hospitals</h4>

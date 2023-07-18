@@ -45,6 +45,14 @@
     margin-right: -250px;
     margin-left: 150px;
   }
+
+  .centered-container form {
+    width: 45vw !important;
+  }
+
+  .card-login {
+    padding: 100px !important;
+  }
 }
 
 .centered-container {
@@ -53,4 +61,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.centered-container form {
+  width: 80vw;
+}
+
+.card-login {
+  padding: 20px;
 }

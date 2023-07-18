@@ -202,3 +202,33 @@ function giveBlood() {
 
   return false;
 }
+
+function contact() {
+  const requestIds = ['contactEmail', 'contactPhone', 'contactMsg'];
+  const fields = ['email', 'phone', 'message'];
+
+  let payload = {};
+
+  payload = Object.fromEntries(requestIds.map((field, idx) => ([fields[idx], document.getElementById(field).value])))
+
+  fetch('/user/contact', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(async (resp) => {
+      const data = await resp.json();
+
+      if (resp.status != 200) {
+        const error = data?.errors ? data.errors[0] : data.message;
+        showMsg(error, 'contactFailed');
+        return;
+      }
+
+      showMsg(data.message, 'contactSuccess');
+    })
+
+  return false;
+}

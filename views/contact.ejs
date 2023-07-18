@@ -16,19 +16,24 @@
       Get in touch, when ever, where ever
     </p>
 
-    <div class="mb-3">
-      <label for="contactEmail" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-      <label for="contactPhone" class="form-label">Phone Number</label>
-      <input type="email" class="form-control" id="contactPhone" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-      <label for="contactMsg" class="form-label">Message</label>
-      <textarea class="form-control" id="contactMsg" rows="10"></textarea>
-    </div>
-    <button class="btn btn-outline-primary" style="padding: 10px 55px;">Send</button>
+    <div id="contactSuccess" class="alert alert-success hide m-3" role="alert"></div>
+    <div id="contactFailed" class="alert alert-danger hide m-3" role="alert"></div>
+
+    <form onsubmit="return contact()">
+      <div class="mb-3">
+        <label for="contactEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com">
+      </div>
+      <div class="mb-3">
+        <label for="contactPhone" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="contactPhone" placeholder="+234 ********** ">
+      </div>
+      <div class="mb-3">
+        <label for="contactMsg" class="form-label">Message</label>
+        <textarea class="form-control" id="contactMsg" rows="10"></textarea>
+      </div>
+      <button class="btn btn-outline-primary" style="padding: 10px 55px;">Send</button>
+    </form>
 
   </div> 
 

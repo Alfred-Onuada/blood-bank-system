@@ -6,6 +6,7 @@ import bloodDonationModel from "../models/blood-donation.model.js";
 import handleError from "../utils/handleError.js";
 import hospitalModel from "../models/hospital.model.js";
 import donorModel from "../models/donor.model.js";
+import messagesModel from '../models/messages.model.js'
 import nodemailer from 'nodemailer';
 const router = Router();
 
@@ -209,7 +210,9 @@ router.get('/requests', async (req, res) => {
 
   const donors = await donorModel.find({});
 
-  res.render('admin/requests', { donationRequest, bloodRequest, combined, hospitals, donors });
+  const messages = await messagesModel.find({});
+
+  res.render('admin/requests', { donationRequest, bloodRequest, combined, hospitals, donors, messages });
 })
 
 router.post('/login', (req, res) => {

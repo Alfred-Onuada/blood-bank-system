@@ -5,6 +5,7 @@ import bloodDonationModel from "../models/blood-donation.model.js";
 import hospitalModel from "../models/hospital.model.js";
 import bloodRequestModel from "../models/blood-request.model.js";
 import jwt from 'jsonwebtoken';
+import messagesModel from "../models/messages.model.js";
 const router = Router();
 
 const getUser = function (req) {
@@ -90,6 +91,18 @@ router.post('/request', async (req, res) => {
     await bloodRequestModel.create(info);
 
     res.status(200).json({ message: "Blood request submitted successfully" })
+  } catch (error) {
+    handleError(error, res);
+  }
+})
+
+router.post('/contact', async (req, res) => {
+  try {
+    const info = req.body;
+
+    await messagesModel.create(info);
+
+    res.status(200).json({ message: "Message received" })
   } catch (error) {
     handleError(error, res);
   }
