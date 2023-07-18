@@ -9,7 +9,7 @@ import donorModel from "../models/donor.model.js";
 import nodemailer from 'nodemailer';
 const router = Router();
 
-const sendEmail = async function (receiver, msg) {
+export const sendEmail = async function (receiver, msg) {
   // initialize nodemailer
   const transporter = nodemailer.createTransport({
     service: 'Gmail',

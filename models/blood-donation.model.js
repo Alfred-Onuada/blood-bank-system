@@ -34,6 +34,3 @@ const bloodDonationSchema = new mongoose.Schema({
 const bloodDonationModel = mongoose.model('bloodDonation', bloodDonationSchema);
 
 export default bloodDonationModel;
-
-
-// TODO: might use mongoDB trigger
