@@ -137,4 +137,5 @@ function switchPanel(panel) {
   [].forEach.call(document.getElementsByClassName('panel'), (elem) => elem.classList.add('hide'));  
 
   document.getElementById(panel).classList.remove('hide');
+  document.getElementsByClassName('bi-x')[0].click();
 }
