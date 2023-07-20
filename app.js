@@ -47,7 +47,7 @@ cron.schedule('0 0 * * *', async () => {
   donations.forEach(async (donation) => {
     const donor = await donorModel.findOne({ _id: donation.donorId });
 
-    sendEmail(donor.email, "Hi, I am here to remind you of your appointment to donate blood today");
+    sendEmail(donor.email, "Hi, \n I am here to remind you of your appointment to donate blood today, go be a hero");
   })
 })
 
