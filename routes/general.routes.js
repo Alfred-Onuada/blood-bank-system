@@ -36,23 +36,11 @@ router.get('', (req, res) => {
   res.redirect('/')
 });
 
-router.get('/about', (req, res) => {
-  const navInfo = getNavInfo(req);
-
-  res.render('about', navInfo);
-})
-
-router.get('/contact', (req, res) => {
-  const navInfo = getNavInfo(req);
-
-  res.render('contact', navInfo);
-})
-
 router.get('/logout', (req, res) => {
   res.clearCookie('tk');
   
   res.redirect('/');
-})
+});
 
 router.use('/auth', authRoutes);
 

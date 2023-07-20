@@ -1,41 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BBMS | Home Page</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BBMS (Blood Bank Management System)</title>
+
+  <!-- Favicons -->
+  <link href="/img/favicon.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="/styles.css" rel="stylesheet">
+
 </head>
+
 <body>
-  <%- include('./partials/header.ejs') %>
 
-  <div class="container">
-    <h2 class="display-5 text-center">Welcome to our Blood Bank Management System (BBMS)</h2>
-    <div class="row" style="align-items: center;">
-      <img src="images/blood-pint.jpeg" alt="An image of a blood pint"
-        class="col-sm-12 col-md-6">
-      <p class="display-7 col-sm-12 col-md-6" style="font-weight: 300;">
-        Welcome to our state-of-the-art Blood Bank System! We are dedicated to saving lives by ensuring a safe and reliable blood supply for those in need. Our advanced platform connects donors, recipients, and healthcare providers, streamlining the process of blood donation and distribution. With our user-friendly interface, you can easily register as a donor, schedule appointments, and track your donations. Together, we can make a difference and contribute to the well-being of our community.
-      </p>
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@bbms.com</a>
+        <i class="bi bi-phone"></i> (+234) 888 111 9812
+      </div>
+      <div class="d-none d-lg-flex social-links align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
     </div>
+  </div>
 
-    <div class="row" style="align-items: center;">
-      <p class="display-7 col-sm-12 col-md-6" style="font-weight: 300;">
-        At our Blood Bank System, your contribution matters. Every donation has the power to save lives and make a lasting impact. We prioritize the safety and quality of the blood supply, adhering to the highest standards and implementing rigorous screening processes. Our dedicated team of professionals works diligently to maintain a well-stocked inventory, ensuring that blood is readily available when and where it is needed most. Join us in our mission to provide hope and healing through the gift of life.
-      </p>
-      <img src="images/hand.jpeg" alt="An image of a blood pint"
-        class="col-sm-12 col-md-6">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">BBMS</a></h1>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#" class="appointment-btn scrollto"><span class="d-none d-md-inline">Get Started</span></a>
+
     </div>
+  </header><!-- End Header -->
 
-    <div class="row mt-5">
-      <p class="display-7 col-sm-12 col-md-12 text-center" style="font-weight: 300;">
-        Join our vibrant community of blood donors and recipients, and be a hero in someone's life. Our Blood Bank System offers a range of convenient features that make it easier than ever to get involved. Whether you're a first-time donor or a regular contributor, our platform allows you to manage your donation journey seamlessly. Explore our educational resources, connect with like-minded individuals, and discover the profound impact your generosity can have. Together, we can create a world where no one has to wait for the lifesaving blood they desperately need.
-      </p>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1>Welcome to my BBMS</h1>
+      <h2>Efficiently streamline blood donation and distribution with our user-friendly blood bank management system, saving lives one click at a time</h2>
+      <a href="#" class="btn-get-started scrollto">Get Started</a>
     </div>
-  </div> 
+  </section><!-- End Hero -->
 
-  <%- include('./partials/footer.ejs') %>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <main id="main">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Why Choose my BBMS?</h3>
+              <p>
+                Welcome to our state-of-the-art Blood Bank System! We are dedicated to saving lives by ensuring a safe and reliable blood supply for those in need. Our advanced platform connects donors, recipients, and healthcare providers, streamlining the process of blood donation and distribution. With our user-friendly interface, you can easily register as a donor, schedule appointments, and track your donations. Together, we can make a difference and contribute to the well-being of our community.
+              </p>
+              <div class="text-center">
+                <a href="#services" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-donate-blood"></i>
+                    <h4>Donate Blood</h4>
+                    <p>Give the gift of life - Donate blood and be a hero in someone's story</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Request for Blood</h4>
+                    <p>Urgently in need of blood? Request blood from our reliable network and let hope flow your way</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>Manage Blood Records</h4>
+                    <p>Simplify and secure blood records management, ensuring every drop counts towards saving lives</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Who we are</h3>
+            <p>At my BBMS, we are dedicated to making a profound impact on the healthcare landscape through our cutting-edge blood bank management system. With a passion for saving lives and a commitment to excellence, we have developed a robust and user-friendly platform that connects donors, recipients, and healthcare providers seamlessly. Our mission is to facilitate a life-saving ecosystem, where every drop of donated blood finds its way to those in urgent need. Backed by advanced technology and a compassionate team, we strive to make the process of donating, requesting, and managing blood records efficient, secure, and accessible to all, ensuring that no life is ever left without the vital support they require. Together, we envision a healthier and safer world, united by the spirit of giving and the unyielding hope for a brighter future</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-lock-alt"></i></div>
+              <h4 class="title"><a href="">Secure</a></h4>
+              <p class="description">Your safety is our top priority - Rest assured, our blood bank management system employs state-of-the-art security measures to safeguard every donation and record</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-happy-alt"></i></div>
+              <h4 class="title"><a href="">Friendly</a></h4>
+              <p class="description">Experience warmth and compassion with our user-friendly blood bank management system, designed to foster a seamless and welcoming environment for donors and recipients alike</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="count-box">
+              <i class="fas fa-user-md"></i>
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Donations</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="far fa-hospital"></i>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hospitals</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-heartbeat"></i></div>
+              <h4><a href="">Donate Blood</a></h4>
+              <p>Donating blood saves lives, offering hope to those in medical emergencies and battling illnesses. It connects strangers through compassion and ensures a steady supply of this life-sustaining resource in hospitals worldwide. Together, we create a safer, healthier world, embracing the noble responsibility of being each other's heroes</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-pills"></i></div>
+              <h4><a href="">Request Blood</a></h4>
+              <p>Rapidly request life-saving blood via our streamlined platform, connecting patients with generous donors in moments of critical need. Together, we save lives</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-hospital-user"></i></div>
+              <h4><a href="">Manage Records</a></h4>
+              <p>Our blood bank management system ensures safe and efficient use of this vital resource. Real-time monitoring guarantees timely responses to emergencies, optimizing its impact for life-saving treatments</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions (FAQs)</h2>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Who can donate blood? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  Generally, individuals aged 18 to 65, weighing at least 50 kg (110 lbs), in good health, and without certain medical conditions are eligible to donate blood. However, specific eligibility criteria may vary by country or blood donation center.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">How often can I donate blood? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  In most cases, whole blood donations can be made every 8 weeks (56 days). For platelet or plasma donations, the waiting period may differ, usually around 7 days to a few weeks, depending on the donation type and regulations.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Is it safe to donate blood? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Yes, donating blood is safe for most healthy individuals. Trained professionals follow strict procedures and use sterile equipment to ensure a safe donation process. Donors may experience mild discomfort, but serious complications are extremely rare.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <h3>Saul Goodman</h3>
+                  <h4>Patient</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    I cannot thank the blood bank management system enough for helping save my life. When I was in a critical condition and needed blood urgently, they efficiently connected me with a donor. This act of kindness and quick response gave me a second chance at life. Forever grateful!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Doctor</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    As a healthcare professional, I highly recommend this blood bank management system. Its real-time monitoring and accurate records have been instrumental in providing timely blood transfusions to our patients in critical situations. It's a reliable tool that empowers us to deliver life-saving care
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4>Doctor</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    I've been using this blood bank management system for years, and it has revolutionized how we manage blood resources in our hospital. Its comprehensive approach, including advanced storage techniques and quality control, ensures we always have the right blood type available when emergencies arise
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+      </div>
+
+      <div style="width: 100%"><iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Ogun%20State,%20Nigeria+(Babcock%20University)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen></iframe></div>
+
+      <div class="container">
+        <div class="row mt-5">
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="/user/contact" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="number" class="form-control" name="phone" placeholder="Your Phone" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" name="message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Babcock University, Illishan-Remo Ogun State</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>contact@bbms.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>(+234) 888 111 9812</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/script.js"></script>
+
 </body>
+
 </html>
