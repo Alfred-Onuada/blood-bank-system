@@ -14,7 +14,9 @@ window.onload = function (e) {
   } 
       
   today = yyyy + '-' + mm + '-' + dd;
-  document.getElementById("donateDate").setAttribute("min", today);
+  document.getElementById("donateDate")?.setAttribute("min", today);
+  document.getElementById("requestDate")?.setAttribute("min", today);
+
 }
 
 function showMsg(msg, elemId) {
@@ -110,8 +112,8 @@ function login(type) {
 }
 
 function requestBlood() {
-  const requestIds = ['requestBloodGroup', 'requestGenotype', 'requestQuantity'];
-  const fields = ['bloodGroup', 'genotype', 'quantity'];
+  const requestIds = ['requestBloodGroup', 'requestGenotype', 'requestQuantity', 'requestDate'];
+  const fields = ['bloodGroup', 'genotype', 'quantity', 'date'];
 
   let payload = {};
 

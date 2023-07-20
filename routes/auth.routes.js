@@ -2,6 +2,7 @@ import { Router, request } from "express";
 import handleError from "../utils/handleError.js";
 import donorModel from "./../models/donor.model.js"
 import hospitalModel from "./../models/hospital.model.js"
+import { sendEmail } from "./admin.routes.js";
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
 const router = Router();
@@ -41,6 +42,8 @@ router.post('/register/:userType', async (req, res) => {
 
     createJWT(info.email, userType, res);
 
+    await sendEmail(info.email, `Hi ${info.email}, \n Welcome to my BBMS, I hope to serve you well`)
+
     res.status(200).json({ message: "Registration Successful" });
   } catch (error) {
     handleError(error, res);
@@ -70,6 +73,8 @@ router.post('/login/:userType', async (req, res) => {
     }
 
     createJWT(email, userType, res);
+
+    await sendEmail(email, `Hi ${email}, \n A device just signed into your account`)
 
     res.status(200).json({ message: "Login successful" });
   } catch (error) {

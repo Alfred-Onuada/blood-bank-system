@@ -114,12 +114,21 @@ router.get('/', (req, res) => {
 router.get('/requests', async (req, res) => {
   const token = req.cookies?.tk;
 
-  if (token) {
-    try {
-      jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    } catch (error) {
+  if (!token) {
+    res.redirect('/');
+    return;
+  }
+
+  try {
+    const payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    if (payload.userType !== 'admin') {
       res.redirect('/');
+      return;
     }
+  } catch (error) {
+    res.redirect('/');
+    return;
   }
 
   const combined = await getNetBloodQuantity();
@@ -176,7 +185,7 @@ router.get('/requests', async (req, res) => {
     },
     {
       $sort: {
-        _id: -1,
+        date: 1,
       },
     },
     {

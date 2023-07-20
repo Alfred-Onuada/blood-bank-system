@@ -26,6 +26,10 @@ const bloodRequestSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please specify the quantity"]
   },
+  date: {
+    type: Date,
+    required: [true, "Please specify the date"]
+  },
   approved: {
     type: String,
     enum: {

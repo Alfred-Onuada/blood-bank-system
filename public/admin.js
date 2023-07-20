@@ -131,3 +131,10 @@ function approveDonation(donationId) {
       location.reload();
     })
 }
+
+
+function switchPanel(panel) {
+  [].forEach.call(document.getElementsByClassName('panel'), (elem) => elem.classList.add('hide'));  
+
+  document.getElementById(panel).classList.remove('hide');
+}

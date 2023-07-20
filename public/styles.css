@@ -1,3 +1,23 @@
+.hide{
+  display: none !important;
+}
+
+.centered-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login{
+  padding: 10%;
+}
+
+.card-login input {
+  width: 60vw;
+}
+
 /**
 * Template Name: Medilab
 * Updated: Jun 23 2023 with Bootstrap v5.3.0
@@ -9,7 +29,7 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
+* {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
