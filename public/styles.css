@@ -18,6 +18,19 @@
   width: 60vw;
 }
 
+.edit-card {
+  width: 90vw;
+  padding: 15px;
+}
+
+@media screen and (min-width: 701px) {
+  .edit-card {
+    width: 80vw;
+    padding: 50px;
+    margin-top: 100px;
+  }
+}
+
 /**
 * Template Name: Medilab
 * Updated: Jun 23 2023 with Bootstrap v5.3.0

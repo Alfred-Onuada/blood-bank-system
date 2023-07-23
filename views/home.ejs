@@ -79,9 +79,11 @@
           <% } else { %>
             <% if (userType === 'donor') { %>
               <li><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#donate">Donate Blood</a></li>
+              <li><a class="nav-link" href="/user/d/profile">My Profile</a></li>
               <li><a class="nav-link" href="/logout">Log out</a></li>
             <% } else if (userType === 'hospital') { %>
               <li><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#request">Request Blood</a></li>
+              <li><a class="nav-link" href="/user/h/profile">My Profile</a></li>
               <li><a class="nav-link" href="/logout">Log out</a></li>
             <% } %>
           <% } %>

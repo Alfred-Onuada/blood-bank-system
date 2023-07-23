@@ -6,7 +6,7 @@ import adminRoutes from "./admin.routes.js"
 
 const router = Router();
 
-const getNavInfo = function (req) {
+export const getNavInfo = function (req) {
   const token = req.cookies?.tk;
 
   let navInfo = {};
@@ -31,6 +31,8 @@ router.get('/', (req, res) => {
 
   res.render('home', navInfo);
 })
+
+
 
 router.get('', (req, res) => {
   res.redirect('/')

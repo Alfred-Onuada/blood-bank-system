@@ -55,8 +55,6 @@
       data[key] = value;
     }
 
-    console.log(data);
-
     fetch(action, {
       method: 'POST',
       body: JSON.stringify(data),

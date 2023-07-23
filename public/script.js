@@ -32,6 +32,62 @@ function showMsg(msg, elemId) {
   }, 4000)
 }
 
+function editProfile() {
+  document.getElementById('beforeEditBtns').classList.add('hide');
+  document.getElementById('afterEditBtns').classList.remove('hide');
+
+  [].forEach.call(document.getElementsByClassName('editable'), (item) => {
+    item.removeAttribute('disabled')
+  })
+}
+
+function cancelEdit() {
+  document.getElementById('afterEditBtns').classList.add('hide');
+  document.getElementById('beforeEditBtns').classList.remove('hide');
+
+  [].forEach.call(document.getElementsByClassName('editable'), (item) => {
+    item.setAttribute('disabled', true)
+  })
+}
+
+function saveProfileChanges(type) {
+  // Tiny magic
+  const hospitalFields = ['hospitalName', 'email', 'address', 'state', 'password'];
+  const donorFields = ['fullName', 'email', 'phone', 'age', 'bloodGroup', 'genotype', 'password'];
+
+  let payload = {};
+
+  if (type == 'hospital') {
+    payload = Object.fromEntries(hospitalFields.map((field, idx) => ([hospitalFields[idx], document.getElementById(field).value])))
+  } else if (type == 'donor') {
+    payload = Object.fromEntries(donorFields.map((field, idx) => ([donorFields[idx], document.getElementById(field).value])))
+  } else {
+    alert('Invalid action');
+    return false;
+  }
+
+  fetch(`/user/editProfile/${type}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(async (resp) => {
+      const data = await resp.json();
+
+      if (resp.status != 200) {
+        const error = data?.errors ? data.errors[0] : data.message;
+        showMsg(error, 'editFailed');
+        return;
+      }
+
+      showMsg(data.message, 'editSuccess');
+    })
+
+  return false;
+}
+
 function register(type) {
   // Tiny magic
   const hospitalIds = ['hospitalNameReg', 'hospitalEmailReg', 'hospitalAddressReg', 'hospitalStateReg', 'hospitalPasswordReg'];
@@ -421,3 +477,4 @@ function giveBlood() {
   new PureCounter();
 
 })()
+

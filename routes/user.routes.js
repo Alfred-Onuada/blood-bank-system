@@ -6,6 +6,8 @@ import hospitalModel from "../models/hospital.model.js";
 import bloodRequestModel from "../models/blood-request.model.js";
 import jwt from 'jsonwebtoken';
 import messagesModel from "../models/messages.model.js";
+import { getNavInfo } from "./general.routes.js";
+import bcrypt from 'bcrypt';
 const router = Router();
 
 const getUser = function (req) {
@@ -24,6 +26,69 @@ const getUser = function (req) {
 
   return userEmail;
 }
+
+router.get('/d/profile', async (req, res) => {
+  try {
+    const email = getUser(req);
+
+    if (email == null) {
+      res.status(401).json({ message: "Unauthorized request" })
+      return;
+    }
+
+    const userInfo = await donorModel.findOne({ email: email });
+    const navInfo = getNavInfo(req);
+
+    res.render('profile', { message: "success", userInfo, ...navInfo })
+  } catch (error) {
+    handleError(error, res);
+  }
+})
+
+router.get('/h/profile', async (req, res) => {
+  try {
+    const email = getUser(req);
+
+    if (email == null) {
+      res.status(401).json({ message: "Unauthorized request" })
+      return;
+    }
+
+    const userInfo = await hospitalModel.findOne({ email: email });
+    const navInfo = getNavInfo(req);
+
+    res.render('profile', { message: "success", userInfo, ...navInfo })
+  } catch (error) {
+    handleError(error, res);
+  }
+})
+
+router.post('/editProfile/:userType', async (req, res) => {
+  try {
+    const email = getUser(req);
+    const { userType } = req.params;
+    const update = req.body;
+
+    if (email == null) {
+      res.status(401).json({ message: "Unauthorized request" })
+      return;
+    }
+
+    if (update.hasOwnProperty('password')) {
+      update.password = bcrypt.hashSync(update.password, 10);
+    }
+
+    if (userType == 'hospital') {
+      await hospitalModel.updateOne({ email: email }, { $set: { ...update } });
+    } else {
+      await donorModel.updateOne({ email: email }, { $set: { ...update } });
+    }
+
+    res.status(200).json({ message: "Update successful" });
+  } catch (error) {
+    handleError(error, res);
+  }
+});
 
 router.get('/centers/:state', async (req, res) => {
   try {
