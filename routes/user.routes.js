@@ -39,7 +39,9 @@ router.get('/d/profile', async (req, res) => {
     const userInfo = await donorModel.findOne({ email: email });
     const navInfo = getNavInfo(req);
 
-    res.render('profile', { message: "success", userInfo, ...navInfo })
+    const donationHistory = await bloodDonationModel.find({ donorId: userInfo._id });
+
+    res.render('profile', { message: "success", userInfo, ...navInfo, donationHistory })
   } catch (error) {
     handleError(error, res);
   }
@@ -57,7 +59,12 @@ router.get('/h/profile', async (req, res) => {
     const userInfo = await hospitalModel.findOne({ email: email });
     const navInfo = getNavInfo(req);
 
-    res.render('profile', { message: "success", userInfo, ...navInfo })
+    const requestHistory = await bloodRequestModel.find({ hospitalId: userInfo._id });
+
+    // get the donations that happened at this hospital
+    const donationsAtCenter = await bloodDonationModel.find({ center: userInfo.hospitalName });
+
+    res.render('profile', { message: "success", userInfo, ...navInfo, requestHistory, donationsAtCenter })
   } catch (error) {
     handleError(error, res);
   }

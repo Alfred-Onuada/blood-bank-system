@@ -4,10 +4,12 @@
 
 .centered-container{
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .card-login{
@@ -29,6 +31,10 @@
     padding: 50px;
     margin-top: 100px;
   }
+}
+
+.purecounter::after {
+  content: '+';
 }
 
 /**

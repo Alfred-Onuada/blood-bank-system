@@ -198,6 +198,96 @@
         </div>
       </form>
     </div>
+
+    <!-- A section for hospitals to see request history and also donations at there clinics -->
+    <% if (userType == 'hospital') { %>
+      <div class="mb-5 mt-5 panel" id="history" style="width: 100%;">
+        <h4 class="display-7" style="font-weight: 200;">Donations at Hospital</h4>
+        <div id="requestBlood" class="alert alert-danger hide m-3" role="alert"></div>
+        <table class="table table-responsive table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Date</th>
+              <th scope="col">Donation Center</th>
+              <th scope="col">Approved</th>
+            </tr>
+          </thead>
+          <tbody style="font-weight: 200;">
+            <% donationsAtCenter.forEach((data, idx) => { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= data['quantity'] %></td>
+                <td><%= new Date(data['date']).getUTCDate() %> / <%= new Date(data['date']).getMonth() %> / <%= new Date(data['date']).getFullYear() %></td>
+                <td><%= data['center'] %></td>
+                <td><%= data['approved'] %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mb-5 mt-5 panel" id="history" style="width: 100%;">
+        <h4 class="display-7" style="font-weight: 200;">Blood Request history</h4>
+        <div id="requestBlood" class="alert alert-danger hide m-3" role="alert"></div>
+        <table class="table table-responsive table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Blood Group</th>
+              <th scope="col">Genotype</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Date</th>
+              <th scope="col">Approved</th>
+            </tr>
+          </thead>
+          <tbody style="font-weight: 200;">
+            <% requestHistory.forEach((data, idx) => { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= data['bloodGroup'] %></td>
+                <td><%= data['genotype'] %></td>
+                <td><%= data['quantity'] %></td>
+                <td><%= new Date(data['date']).getUTCDate() %> / <%= new Date(data['date']).getMonth() %> / <%= new Date(data['date']).getFullYear() %></td>
+                <td><%= data['approved'] %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+
+    <!-- A section for donors to see their donation history -->
+    <% if (userType == 'donor') { %>
+      <div class="mb-5 mt-5 panel" id="history" style="width: 100%;">
+        <h4 class="display-7" style="font-weight: 200;">Donation history</h4>
+        <div id="requestBlood" class="alert alert-danger hide m-3" role="alert"></div>
+        <table class="table table-responsive table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Date</th>
+              <th scope="col">Donation Center</th>
+              <th scope="col">Approved</th>
+            </tr>
+          </thead>
+          <tbody style="font-weight: 200;">
+            <% donationHistory.forEach((data, idx) => { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= data['quantity'] %></td>
+                <td><%= new Date(data['date']).getUTCDate() %> / <%= new Date(data['date']).getMonth() %> / <%= new Date(data['date']).getFullYear() %></td>
+                <td><%= data['center'] %></td>
+                <td><%= data['approved'] %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
