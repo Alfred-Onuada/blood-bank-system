@@ -137,5 +137,11 @@ function switchPanel(panel) {
   [].forEach.call(document.getElementsByClassName('panel'), (elem) => elem.classList.add('hide'));  
 
   document.getElementById(panel).classList.remove('hide');
+
+  // switch the active
+  [].forEach.call(document.getElementsByClassName('scrollto'), elem => elem.classList.remove('active'));
+  this.event.target.classList.add('active')
+
+  // becomes visible on mobile
   document.getElementsByClassName('bi-x')[0].click();
 }
